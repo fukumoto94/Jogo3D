@@ -68,11 +68,11 @@ public class PlayerMove : PlayerAnimation
 
         desiredMoveDirection = forward * inputZ + right * inputX;
 
-        if (!blockRotationPlayer && !isAttacking(3) && Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        if (!blockRotationPlayer && Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
         }
-        else if(isAttacking(5))
+        else if(isAttacking(5) || isAttacking(6))
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(camera.transform.forward.x, 
                                                                                                           desiredMoveDirection.y, 
@@ -99,10 +99,10 @@ public class PlayerMove : PlayerAnimation
                                         VariableLerp(0, desiredMoveDirection.z, lerpTime)));
         }
         */
-
-        if(!isAttacking(0))
+        if (!isAttacking(0))
         {
             controller.Move(desiredMoveDirection * 0);
+
         }
         else
         {

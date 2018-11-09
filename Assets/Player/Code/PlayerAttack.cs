@@ -8,9 +8,16 @@ public class PlayerAttack : PlayerAnimation
     public GameObject[] weapon;
 
     //particles
+    [Header ("Particulas")]
     public GameObject[] particle;
 
+
+    [Header("SkillsPrefabs")]
     public GameObject powerPrefab;
+    public GameObject earthShatterPrefab;
+
+    [HideInInspector]
+    public bool canAttack;
 
     private bool nextAttack = true;
     private bool rangeAttack = true;
@@ -20,9 +27,13 @@ public class PlayerAttack : PlayerAnimation
 
 	void Update ()
     {
-        InputAttacks();
-        ParticleSystem();
-        ActivateWeapon();
+        if(canAttack)
+        {
+            InputAttacks();
+            ParticleSystem();
+            ActivateWeapon();
+        }
+        
         //ChangeMask(attackMask[1], attackMask[0]);
     }
     void ChangeMask(AvatarMask newMask, AvatarMask activeMask)
@@ -65,7 +76,8 @@ public class PlayerAttack : PlayerAnimation
         }
         else if (Input.GetKey(KeyCode.E) && nextAttack)
         {
-            StartCoroutine(OnCompleteAttackAnimation(0.5f));
+            rangeAttack = true;
+            StartCoroutine(OnCompleteAttackAnimation(0.8f));
         }
         else if (Input.GetKey(KeyCode.R) && nextAttack)
         {
@@ -96,20 +108,19 @@ public class PlayerAttack : PlayerAnimation
         //destroy the bullet after
           Destroy(power, 1f);
     }
-
-    IEnumerator ParticleSystem2(GameObject go, float start, float stop)
+    private void MeleeRangeAttack()
     {
-        var timer = 0.0f;
-        timer+=Time.deltaTime*5;
-        if (timer > start)
-        {
-            go.SetActive(true);
-        }
-        Debug.Log(timer);
-        yield return new WaitUntil(()=> timer > stop);
-        go.SetActive(false);
+        //Create the power from powerprefab
+        var power = (GameObject)Instantiate(
+            earthShatterPrefab,
+            particle[3].transform.position,
+            particle[3].transform.rotation);
 
+        //add velocity to the power
+        //power.GetComponent<Rigidbody>().velocity = this.transform.forward * 10;
 
+        //destroy the bullet after
+        Destroy(power, 1.5f);
     }
 
     private void ActivateWeapon()
@@ -136,7 +147,6 @@ public class PlayerAttack : PlayerAnimation
 
     IEnumerator OnCompleteAttackAnimation(float coldown)
     {
-        
         nextAttack = false;
         yield return new WaitForSeconds(coldown);
         if(isAttacking(5) && rangeAttack)
@@ -144,6 +154,12 @@ public class PlayerAttack : PlayerAnimation
             RangeAttack();
             rangeAttack = false;
         }
+        if (isAttacking(6) && rangeAttack)
+        {
+            MeleeRangeAttack();
+            rangeAttack = false;
+        }
+
         nextAttack = true;
     }
 }

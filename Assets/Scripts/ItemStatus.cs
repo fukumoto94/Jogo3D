@@ -7,7 +7,7 @@ public class ItemStatus : MonoBehaviour {
     private Color endColor;
     private Color resultColor;
 
-    public Material mat;
+    private Material mat;
 
     public Quaternion color1;
     public Quaternion color2;
@@ -20,12 +20,14 @@ public class ItemStatus : MonoBehaviour {
 	void Start () {
         baseColor = Color.white;
         endColor = Color.blue;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        lerpTime += Time.deltaTime * 1.5f;
+        mat = GetComponent<Material>();
 
+    }
+
+    // Update is called once per frame
+    void Update () {
+        lerpTime += Time.deltaTime * 1.5f;
+        mat = GetComponent<Renderer>().material;
         if (auxLerp == 0)
         {
             mat.color = ColorLerp(baseColor, endColor, lerpTime);

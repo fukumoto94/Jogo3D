@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4256042933465170}
   - component: {fileID: 33234390392501850}
   - component: {fileID: 23001929253091538}
+  - component: {fileID: 114639291058999808}
+  - component: {fileID: 114318081471876524}
   m_Layer: 0
   m_Name: 80_________0_Mesh.066
   m_TagString: Untagged
@@ -36,7 +38,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4355486912197202}
-  - component: {fileID: 114611387542576646}
   m_Layer: 0
   m_Name: Schythe
   m_TagString: Untagged
@@ -113,18 +114,78 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1099937846990388}
   m_Mesh: {fileID: 4300000, guid: 9e2479959a55f5b4eb587c35270f1247, type: 3}
---- !u!114 &114611387542576646
+--- !u!114 &114318081471876524
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1433904453674192}
+  m_GameObject: {fileID: 1099937846990388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585901dad4c09564db67dc1e08787f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnEffectTime: 4
+  pause: 3
+  fadeIn:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  fadeOut:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0.0041656494
+      value: 1.0062485
+      inSlope: -2.250053
+      outSlope: -2.250053
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.01680592
+    - serializedVersion: 3
+      time: 0.9874878
+      value: 0.012500763
+      inSlope: 0.009677874
+      outSlope: 0.009677874
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &114639291058999808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1099937846990388}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82da1f15b0057414ba843da077d85a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: 1bb42febd0063554da6fe3430c25a81f, type: 2}
   color1: {x: 0, y: 0, z: 0, w: 0}
   color2: {x: 0, y: 0, z: 0, w: 0}
   colorEnd: {x: 0, y: 0, z: 0, w: 0}
