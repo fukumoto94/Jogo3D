@@ -6,6 +6,8 @@ public class PlayerMove : PlayerAnimation
 {
     private Camera cam;
     private CharacterController controller;
+    private CameraFollow cf;
+    private float startInputSensitive;
 
     //movement
     private float inputX;
@@ -34,6 +36,8 @@ public class PlayerMove : PlayerAnimation
     // Use this for initialization
     void Start ()
     {
+        cf = FindObjectOfType<CameraFollow>();
+        startInputSensitive = cf.inputSensitivity;
         cam = Camera.main;
         controller = this.GetComponent<CharacterController>();
     }
@@ -67,16 +71,27 @@ public class PlayerMove : PlayerAnimation
         right.Normalize();
 
         desiredMoveDirection = forward * inputZ + right * inputX;
-
-        if (!blockRotationPlayer && Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        if (isAttacking(5) || isAttacking(6))
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
-        }
-        else if(isAttacking(5) || isAttacking(6))
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(camera.transform.forward.x, 
-                                                                                                          desiredMoveDirection.y, 
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(new Vector3(camera.transform.forward.x,
+                                                                                                          desiredMoveDirection.y,
+                 
                                                                                                           camera.transform.forward.z)), desiredRotationSpeed);
+            if(isAttacking(6))
+            {
+                cf.inputSensitivity = 0f;
+
+            }
+            else
+            {
+                cf.inputSensitivity = startInputSensitive;
+            }
+
+        }
+        else if (!blockRotationPlayer && Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            cf.inputSensitivity = startInputSensitive;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredMoveDirection), desiredRotationSpeed);
         }
 
         //graduate move

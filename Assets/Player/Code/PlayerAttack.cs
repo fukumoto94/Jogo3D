@@ -21,11 +21,10 @@ public class PlayerAttack : PlayerAnimation
 
     private bool nextAttack = true;
     private bool rangeAttack = true;
- 
 
     public AvatarMask[] attackMask;
 
-	void Update ()
+    void Update ()
     {
         if(canAttack)
         {
