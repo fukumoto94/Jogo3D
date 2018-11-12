@@ -61,19 +61,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
-    <Compile Include="Assets\KY_effects\Script\ConGUI.cs" />
-    <Compile Include="Assets\KY_effects\Script\Lighting.cs" />
-    <Compile Include="Assets\Player\Code\PlayerAnimation.cs" />
-    <Compile Include="Assets\Player\Code\PlayerAttack.cs" />
-    <Compile Include="Assets\Player\Code\PlayerMove.cs" />
-    <Compile Include="Assets\Player\Code\RangeAttack.cs" />
-    <Compile Include="Assets\Scripts\CameraCollision.cs" />
-    <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\ItemStatus.cs" />
-    <None Include="Assets\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
-    <None Include="Assets\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
-    <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />
+    <Compile Include="Assets\3rd-Party\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
+    <Compile Include="Assets\3rd-Party\KY_effects\Script\ConGUI.cs" />
+    <Compile Include="Assets\3rd-Party\KY_effects\Script\Lighting.cs" />
+    <Compile Include="Assets\Dissolve Edge by Moonflower Carnivore\Scripts\HideIfDisabledDrawer.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraCollision.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Itens\ItemProperties.cs" />
+    <Compile Include="Assets\Scripts\Itens\ItemStatus.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
+    <Compile Include="Assets\Scripts\Player\RangeAttack.cs" />
+    <None Include="Assets\Dissolve Edge by Moonflower Carnivore\Shaders\Transparent_Unlit_DissolveEdge.shader" />
+    <None Include="Assets\3rd-Party\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
+    <None Include="Assets\3rd-Party\KY_effects\MagicEffectsPackFree\ReadMe.txt" />
+    <None Include="Assets\Dissolve Edge by Moonflower Carnivore\readme_DissolveEdge.txt" />
+    <None Include="Assets\3rd-Party\EffectExamples\Magic Effects\Shaders\Ice.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/JogoUnity/Projeto2018/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
